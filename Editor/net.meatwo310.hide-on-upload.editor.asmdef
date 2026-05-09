@@ -1,0 +1,19 @@
+{
+  "name": "net.meatwo310.hide-on-upload.editor",
+  "rootNamespace": "Meatwo310.HideOnUpload.Editor",
+  "references": [
+    "net.meatwo310.hide-on-upload.runtime",
+    "nadena.dev.ndmf"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

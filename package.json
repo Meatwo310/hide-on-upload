@@ -1,0 +1,19 @@
+{
+  "name": "net.meatwo310.hide-on-upload",
+  "displayName": "Hide On Upload",
+  "version": "0.1.0",
+  "unity": "2022.3",
+  "description": "NDMF component that disables marked GameObjects when building a VRChat avatar.",
+  "url": "https://github.com/Meatwo310/hide-on-upload/releases/download/v0.1.0/net.meatwo310.hide-on-upload-0.1.0.zip",
+  "author": {
+    "name": "Meatwo310",
+    "email": "vpm@meatwo310.net"
+  },
+  "license": "MIT",
+  "changelogUrl": "https://github.com/Meatwo310/hide-on-upload/blob/main/CHANGELOG.md",
+  "documentationUrl": "https://github.com/Meatwo310/hide-on-upload#readme",
+  "repo": "https://github.com/Meatwo310/hide-on-upload",
+  "vpmDependencies": {
+    "nadena.dev.ndmf": ">=1.6.0"
+  }
+}

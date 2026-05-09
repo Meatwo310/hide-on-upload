@@ -1,0 +1,77 @@
+name: Build Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate tag and package version
+        id: package
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          tag="${GITHUB_REF_NAME}"
+          version="${tag#v}"
+          package_version="$(node -p "require('./package.json').version")"
+          package_name="$(node -p "require('./package.json').name")"
+
+          if [ "$tag" = "$version" ]; then
+            echo "::error::Release tag must start with 'v'. Got: $tag"
+            exit 1
+          fi
+
+          if [ "$version" != "$package_version" ]; then
+            echo "::error::Tag version ($version) does not match package.json version ($package_version)."
+            exit 1
+          fi
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "package_name=$package_name" >> "$GITHUB_OUTPUT"
+          echo "zip_name=$package_name-$version.zip" >> "$GITHUB_OUTPUT"
+
+      - name: Build package zip
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          zip_name="${{ steps.package.outputs.zip_name }}"
+          git archive \
+            --format=zip \
+            --output="$zip_name" \
+            HEAD \
+            package.json \
+            Runtime \
+            Editor \
+            README.md \
+            CHANGELOG.md \
+            LICENSE
+
+          sha256sum "$zip_name" > "$zip_name.sha256"
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          version="${{ steps.package.outputs.version }}"
+          zip_name="${{ steps.package.outputs.zip_name }}"
+
+          gh release create "v$version" \
+            "$zip_name" \
+            "$zip_name.sha256" \
+            --title "v$version" \
+            --notes-file CHANGELOG.md

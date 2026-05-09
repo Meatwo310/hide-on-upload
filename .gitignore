@@ -1,0 +1,13 @@
+*.zip
+*.zip.sha256
+
+.DS_Store
+Thumbs.db
+
+Library/
+Temp/
+Obj/
+Build/
+Builds/
+Logs/
+UserSettings/
