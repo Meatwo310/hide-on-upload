@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.0
+
+- Added a custom inspector for `HideOnUpload`.
+
 ## 0.1.1
 
 - Marked `HideOnUpload` as VRChat SDK editor-only with `IEditorOnly`.
