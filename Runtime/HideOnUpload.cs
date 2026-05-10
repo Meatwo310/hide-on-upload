@@ -1,11 +1,12 @@
 using UnityEngine;
+using VRC.SDKBase;
 
 namespace Meatwo310.HideOnUpload
 {
     [AddComponentMenu("Meatwo310/Hide On Upload")]
     [DisallowMultipleComponent]
     [HelpURL("https://github.com/Meatwo310/hide-on-upload")]
-    public sealed class HideOnUpload : MonoBehaviour
+    public sealed class HideOnUpload : MonoBehaviour, IEditorOnly
     {
     }
 }

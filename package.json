@@ -14,6 +14,7 @@
   "documentationUrl": "https://github.com/Meatwo310/hide-on-upload#readme",
   "repo": "https://github.com/Meatwo310/hide-on-upload",
   "vpmDependencies": {
+    "com.vrchat.avatars": ">=3.7.0",
     "nadena.dev.ndmf": ">=1.6.0"
   }
 }

@@ -1,7 +1,9 @@
 {
   "name": "net.meatwo310.hide-on-upload.runtime",
   "rootNamespace": "Meatwo310.HideOnUpload",
-  "references": [],
+  "references": [
+    "VRC.SDKBase"
+  ],
   "includePlatforms": [],
   "excludePlatforms": [],
   "allowUnsafeCode": false,
